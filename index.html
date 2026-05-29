@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Costos Y Presupuestos</title>
   <link rel="stylesheet" href="costos.css">
 </head>
+
 <body>
+
   <header>
     <h1>COSTOS Y PRESUPUESTOS</h1>
   </header>
@@ -14,37 +17,248 @@
   <nav>
     <button onclick="mostrarSeccion('conceptos')">Conceptos</button>
   </nav>
-  
+
   <section id="conceptos">
-    <div>
+
+    <!-- TEMA: MANO DE OBRA -->
+    <div class="concepto" id="mano-de-obra">
       <h2>Mano de Obra</h2>
-      <p></p>
-      <h4>Ejemplos</h4>
+      <p>
+        La mano de obra representa el <strong>esfuerzo humano</strong> utilizado en la producción
+        de bienes o servicios. Es uno de los elementos fundamentales del costo de producción
+        y puede clasificarse en dos tipos:
+      </p>
+
+      <div class="subtema">
+        <h3>Mano de Obra Directa</h3>
+        <p>
+          Es aquella que <strong>participa directamente</strong> en la fabricación o elaboración
+          del producto. Su trabajo puede medirse y asignarse fácilmente a cada unidad producida.
+        </p>
+        <ul>
+          <li>Cocineros</li>
+          <li>Operarios de producción</li>
+          <li>Carpinteros</li>
+        </ul>
+      </div>
+
+      <div class="subtema">
+        <h3>Mano de Obra Indirecta</h3>
+        <p>
+          Es aquella que <strong>apoya el proceso productivo</strong> sin intervenir directamente
+          en la fabricación. Su costo se distribuye entre todos los productos.
+        </p>
+        <ul>
+          <li>Supervisores</li>
+          <li>Personal de limpieza</li>
+          <li>Vigilantes</li>
+        </ul>
+      </div>
+
+      <div class="ejemplo">
+        <h4>Ejemplo práctico</h4>
+        <p>
+          Un chef recibe un sueldo de <strong>$600 mensuales</strong> por preparar alimentos en
+          un restaurante. Este valor forma parte del <em>costo de mano de obra directa</em>, ya que
+          su trabajo está directamente vinculado a la elaboración de los platos que se venden.
+        </p>
+      </div>
+
+      <div class="conclusion">
+        <h4>Conclusión</h4>
+        <p>
+          La mano de obra es fundamental para el funcionamiento de cualquier empresa, ya que
+          influye directamente en la <strong>calidad, productividad y eficiencia</strong> del
+          proceso productivo.
+        </p>
+      </div>
     </div>
-    <div>
+
+
+    <!-- TEMA:COSTEO DE RECETAS  -->
+    <div class="concepto" id="costeo-recetas">
       <h2>Costeo de Recetas</h2>
-      <p></p>
-      <h4>Ejemplos</h4>
+      <p>
+        El costeo de recetas consiste en <strong>calcular el costo total</strong> de los ingredientes
+        utilizados en la preparación de un alimento o bebida. Es una herramienta clave en
+        restaurantes, cafeterías y negocios gastronómicos para fijar precios y controlar gastos.
+      </p>
+
+      <div class="subtema">
+        <h3>Elementos del Costeo</h3>
+        <ul>
+          <li><strong>Ingredientes:</strong> los insumos que se utilizan en la receta.</li>
+          <li><strong>Cantidades:</strong> la cantidad exacta de cada ingrediente.</li>
+          <li><strong>Precio unitario:</strong> el costo por unidad de cada ingrediente.</li>
+          <li><strong>Costo total:</strong> cantidad × precio unitario de cada ingrediente.</li>
+        </ul>
+      </div>
+
+      <div class="ejemplo">
+        <h4>Ejemplo práctico — Costeo de un pastel</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Ingrediente</th>
+              <th>Cantidad</th>
+              <th>Precio unitario</th>
+              <th>Costo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Harina</td>
+              <td>1 kg</td>
+              <td>$2.00</td>
+              <td>$2.00</td>
+            </tr>
+            <tr>
+              <td>Huevos</td>
+              <td>6 unidades</td>
+              <td>$0.25 c/u</td>
+              <td>$1.50</td>
+            </tr>
+            <tr>
+              <td>Leche</td>
+              <td>1 litro</td>
+              <td>$1.00</td>
+              <td>$1.00</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="3"><strong>Costo total de la receta</strong></td>
+              <td><strong>$4.50</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Si se desea obtener ganancia, se debe agregar el <strong>margen de ganancia</strong>
+          correspondiente al precio final de venta.
+        </p>
+      </div>
+
+      <div class="conclusion">
+        <h4>Conclusión</h4>
+        <p>
+          El costeo de recetas permite <strong>establecer precios adecuados</strong>, controlar
+          gastos y garantizar la rentabilidad en negocios relacionados con alimentos y bebidas.
+        </p>
+      </div>
     </div>
-    <div>
+
+    
+    <!-- TEMA: MARGEN DE GANANCIA -->
+    <div class="concepto" id="margen-ganancia">
       <h2>Margen de Ganancia</h2>
-      <p></p>
-      <h4>Ejemplos</h4>
+      <p>
+        El margen de ganancia es la <strong>diferencia entre el costo de un producto y su
+          precio de venta</strong>. Representa la utilidad o beneficio que obtiene la empresa
+        por cada unidad vendida.
+      </p>
+
+      <div class="subtema">
+        <h3>Fórmulas</h3>
+
+        <div class="formula">
+          <p><strong>Ganancia (valor absoluto):</strong></p>
+          <div class="formula-box">
+            Ganancia = Precio de Venta − Costo Total
+          </div>
+        </div>
+
+        <div class="formula">
+          <p><strong>Porcentaje de ganancia:</strong></p>
+          <div class="formula-box">
+            % Ganancia = (Ganancia ÷ Costo) × 100
+          </div>
+        </div>
+      </div>
+
+      <div class="ejemplo">
+        <h4>Ejemplo práctico</h4>
+        <ul>
+          <li>Costo de producción: <strong>$10</strong></li>
+          <li>Precio de venta: <strong>$15</strong></li>
+        </ul>
+        <div class="calculo">
+          <p>Ganancia = $15 − $10 = <strong>$5</strong></p>
+          <p>% Ganancia = ($5 ÷ $10) × 100 = <strong>50%</strong></p>
+        </div>
+        <p>Es decir, por cada producto vendido se obtiene una <strong>ganancia del 50%</strong> sobre el costo.</p>
+      </div>
+
+      <div class="conclusion">
+        <h4>Conclusión</h4>
+        <p>
+          El margen de ganancia permite conocer la <strong>rentabilidad de los productos</strong>
+          y ayuda a tomar decisiones estratégicas sobre precios y ventas.
+        </p>
+      </div>
     </div>
-    <div>
+
+    <!-- TEMA: PUNTO DE EQUILIBRIO -->
+    <div class="concepto" id="punto-equilibrio">
       <h2>Punto de Equilibrio</h2>
-      <p></p>
-      <h4>Ejemplos</h4>
+      <p>
+        El punto de equilibrio es el <strong>nivel de ventas donde los ingresos son iguales
+          a los costos totales</strong>. En este punto la empresa no genera ganancias ni pérdidas.
+        Es una herramienta esencial para saber cuántas unidades deben venderse para cubrir
+        todos los gastos.
+      </p>
+
+      <div class="subtema">
+        <h3>Fórmula</h3>
+        <div class="formula-box grande">
+          PE = Costos Fijos ÷ (Precio de Venta − Costo Variable Unitario)
+        </div>
+        <ul>
+          <li><strong>PE:</strong> Punto de equilibrio (unidades a vender).</li>
+          <li><strong>Costos fijos:</strong> Gastos que no cambian sin importar cuánto se produzca (alquiler, sueldos
+            fijos, etc.).</li>
+          <li><strong>Precio de venta:</strong> El valor al que se vende cada unidad.</li>
+          <li><strong>Costo variable unitario:</strong> El costo de producir una sola unidad.</li>
+        </ul>
+      </div>
+
+      <div class="ejemplo">
+        <h4>Ejemplo práctico</h4>
+        <ul>
+          <li>Costos fijos: <strong>$1,000</strong></li>
+          <li>Precio de venta por unidad: <strong>$20</strong></li>
+          <li>Costo variable unitario: <strong>$10</strong></li>
+        </ul>
+        <div class="calculo">
+          <p>PE = $1,000 ÷ ($20 − $10)</p>
+          <p>PE = $1,000 ÷ $10</p>
+          <p>PE = <strong>100 unidades</strong></p>
+        </div>
+        <p>
+          La empresa debe vender <strong>al menos 100 unidades</strong> para no perder dinero.
+          A partir de la unidad 101 comienza a generar ganancias.
+        </p>
+      </div>
+
+      <div class="conclusion">
+        <h4>Conclusión</h4>
+        <p>
+          El punto de equilibrio permite identificar el <strong>mínimo nivel de ventas necesario</strong>
+          para cubrir los costos de operación, siendo fundamental para la planificación financiera
+          y la toma de decisiones empresariales.
+        </p>
+      </div>
     </div>
+
     <hr>
-    <h2>Test de evaluacion</h2>
+
+    <!-- TEST DE EVALUACION -->
+
+    <div id="test-evaluacion">
+      <h2>Test de Evaluación</h2>
+      <!-- El test se desarrollará en la siguiente fase -->
+    </div>
 
   </section>
 
-
-
-
-
   <script src="costos.js"></script>
 </body>
+
 </html>
