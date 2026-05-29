@@ -15,8 +15,8 @@
   --color-ejemplo-borde: #e8c97a;
   --color-conclusion:  #eef5eb;
   --color-conclusion-borde: #6aaa55;
-  --color-subtema:     #f2f0f8;
-  --color-subtema-borde: #7f77dd;
+  --color-subtema:     #f2f2f0;
+  --color-subtema-borde: #9e9e97;
   --color-formula:     #1a3a5c;
   --color-formula-text:#ffffff;
   --color-table-head:  #1a3a5c;
@@ -34,7 +34,7 @@
   padding: 0;
 }
 
-section {
+/* section {
   display: none;
   padding: 20px;
   max-width: 1000px;
@@ -46,7 +46,7 @@ section {
 
 section.activa {
   display: block;
-}
+} */
 
 body {
   background-color: var(--color-bg);
@@ -371,23 +371,182 @@ hr {
   .concepto {
     padding: 1.25rem 1rem 1rem;
   }
-
+ 
   .formula-box {
     font-size: 0.88rem;
     padding: 0.5rem 0.9rem;
   }
-
+ 
   .formula-box.grande {
     font-size: 0.88rem;
     padding: 0.7rem 1rem;
   }
-
+ 
   header h1 {
     font-size: 1.4rem;
   }
-
+ 
   thead th, tbody td {
     padding: 0.45rem 0.6rem;
     font-size: 0.88rem;
   }
+}
+ 
+/* ========================================
+   TEST DE EVALUACIÓN
+   ======================================== */
+.test-intro {
+  font-size: 0.97rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+ 
+.pregunta {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.3s;
+}
+ 
+.pregunta.correcta {
+  border-color: var(--color-conclusion-borde);
+  background-color: var(--color-conclusion);
+}
+ 
+.pregunta.incorrecta {
+  border-color: #d9534f;
+  background-color: #fff5f5;
+}
+ 
+.enunciado {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  color: var(--color-text);
+}
+ 
+.num-pregunta {
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-right: 0.3rem;
+}
+ 
+.opcion {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.97rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-bottom: 0.2rem;
+}
+ 
+.opcion:hover {
+  background-color: var(--color-accent-soft);
+}
+ 
+.opcion input[type="radio"] {
+  margin-top: 3px;
+  accent-color: var(--color-accent);
+  flex-shrink: 0;
+}
+ 
+.feedback {
+  margin-top: 0.75rem;
+  font-size: 0.92rem;
+  min-height: 1.2rem;
+}
+ 
+.feedback.correcto {
+  color: #2e7d20;
+  font-weight: 600;
+}
+ 
+.feedback.incorrecto {
+  color: #b03030;
+}
+ 
+.feedback.advertencia {
+  color: #9a6500;
+}
+ 
+.btn-evaluar {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.65rem 2rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+ 
+.btn-evaluar:hover {
+  background-color: var(--color-accent);
+}
+ 
+.btn-reintentar {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  color: var(--color-accent);
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  font-weight: 600;
+  padding: 0.6rem 1.75rem;
+  border: 1.5px solid var(--color-accent);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+ 
+.btn-reintentar:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+ 
+.resultado-test {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+ 
+.resultado-excelente {
+  background-color: var(--color-conclusion);
+  border: 1px solid var(--color-conclusion-borde);
+}
+ 
+.resultado-bien {
+  background-color: #fff8ec;
+  border: 1px solid var(--color-ejemplo-borde);
+}
+ 
+.resultado-revisar {
+  background-color: #fff5f5;
+  border: 1px solid #d9534f;
+}
+ 
+.puntaje {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  white-space: nowrap;
+}
+ 
+.mensaje-resultado {
+  font-size: 1rem;
+  color: var(--color-text);
 }

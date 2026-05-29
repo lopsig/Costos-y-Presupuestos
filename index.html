@@ -253,7 +253,74 @@
 
     <div id="test-evaluacion">
       <h2>Test de Evaluación</h2>
-      <!-- El test se desarrollará en la siguiente fase -->
+      <p class="test-intro">Responde las siguientes preguntas para comprobar lo que aprendiste.</p>
+    
+      <form id="form-test" onsubmit="evaluarTest(event)">
+    
+        <!-- Pregunta 1 -->
+        <div class="pregunta" id="pregunta-1">
+          <p class="enunciado">
+            <span class="num-pregunta">1.</span> 
+            ¿Qué representa la <strong>mano de obra</strong>?
+          </p>
+          <label class="opcion">
+            <input type="radio" name="p1" value="a"> El costo de las máquinas utilizadas en la producción
+          </label>
+          <label class="opcion">
+            <input type="radio" name="p1" value="b"> El esfuerzo humano utilizado en la producción de bienes o servicios
+          </label>
+          <label class="opcion">
+            <input type="radio" name="p1" value="c"> Los materiales necesarios para fabricar un
+            producto
+          </label>
+          <p class="feedback" id="feedback-1"></p>
+        </div>
+    
+        <!-- Pregunta 2 -->
+        <div class="pregunta" id="pregunta-2">
+          <p class="enunciado">
+            <span class="num-pregunta">2.</span> 
+            ¿Para qué sirve el <strong>costeo de recetas</strong>?
+          </p>
+          <label class="opcion">
+            <input type="radio" name="p2" value="a"> Para decorar los platos de un restaurante
+          </label>
+          <label class="opcion">
+            <input type="radio" name="p2" value="b"> Para calcular el costo total de los ingredientes de
+            un alimento o bebida
+          </label>
+          <label class="opcion">
+            <input type="radio" name="p2" value="c"> Para medir cuánto tarda en prepararse un plato
+          </label>
+          <p class="feedback" id="feedback-2"></p>
+        </div>
+    
+        <!-- Pregunta 3 -->
+        <div class="pregunta" id="pregunta-3">
+          <p class="enunciado">
+            <span class="num-pregunta">3.</span> 
+            ¿Qué indica el <strong>punto de equilibrio</strong>?
+          </p>
+          <label class="opcion">
+            <input type="radio" name="p3" value="a"> El momento en que la empresa obtiene su mayor ganancia
+          </label>
+          <label class="opcion">
+            <input type="radio" name="p3" value="b"> El nivel de ventas donde los ingresos son iguales a los costos, sin ganancias ni pérdidas
+          </label>
+          <label class="opcion">
+            <input type="radio" name="p3" value="c"> El precio máximo al que se puede vender un producto
+          </label>
+          <p class="feedback" id="feedback-3"></p>
+        </div>
+    
+        <button type="submit" class="btn-evaluar">Enviar respuestas</button>
+    
+      </form>
+    
+      <div id="resultado-test" class="resultado-test" style="display:none;"></div>
+      
+      <button id="btn-reintentar" class="btn-reintentar" onclick="reiniciarTest()" style="display:none;">Volver a intentar</button>
+    
     </div>
 
   </section>
