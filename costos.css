@@ -34,7 +34,7 @@
   padding: 0;
 }
 
-/* section {
+section {
   display: none;
   padding: 20px;
   max-width: 1000px;
@@ -46,7 +46,7 @@
 
 section.activa {
   display: block;
-} */
+}
 
 body {
   background-color: var(--color-bg);
