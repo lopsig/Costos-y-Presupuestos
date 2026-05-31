@@ -1,0 +1,552 @@
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+/* --- Variables --- */
+:root {
+  --color-primary:     #1a3a5c;
+  --color-accent:      #2e6da4;
+  --color-accent-soft: #ddeaf6;
+  --color-bg:          #f9f7f2;
+  --color-surface:     #ffffff;
+  --color-border:      #d4cfc5;
+  --color-text:        #1c1c1c;
+  --color-text-muted:  #555550;
+  --color-ejemplo:     #fff8ec;
+  --color-ejemplo-borde: #e8c97a;
+  --color-conclusion:  #eef5eb;
+  --color-conclusion-borde: #6aaa55;
+  --color-subtema:     #f2f2f0;
+  --color-subtema-borde: #9e9e97;
+  --color-formula:     #1a3a5c;
+  --color-formula-text:#ffffff;
+  --color-table-head:  #1a3a5c;
+  --color-table-alt:   #f4f2ed;
+  --font-serif:        'Merriweather', Georgia, serif;
+  --font-sans:         'Source Sans 3', sans-serif;
+  --radius:            6px;
+  --shadow:            0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* --- Reset base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  display: none;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+section.activa {
+  display: block;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+header {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-align: center;
+  padding: 2.5rem 1.5rem 2rem;
+  border-bottom: 4px solid var(--color-accent);
+}
+
+header h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   NAV
+   ======================================== */
+nav {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+nav button {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: transparent;
+  border: 1.5px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 0.4rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav button:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+/* ========================================
+   SECCIÓN PRINCIPAL
+   ======================================== */
+#conceptos {
+  max-width: 860px;
+  margin: 2.5rem auto;
+  padding: 0 1.25rem 3rem;
+}
+
+/* ========================================
+   TARJETA DE CONCEPTO
+   ======================================== */
+.concepto {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 2rem 2rem 1.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow);
+}
+
+.concepto h2 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.concepto > p {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+}
+
+/* ========================================
+   SUBTEMA
+   ======================================== */
+.subtema {
+  background-color: var(--color-subtema);
+  border-left: 4px solid var(--color-subtema-borde);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.subtema h3 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.subtema p {
+  font-size: 0.97rem;
+  margin-bottom: 0.6rem;
+}
+
+.subtema ul {
+  padding-left: 1.4rem;
+  font-size: 0.97rem;
+}
+
+.subtema ul li {
+  margin-bottom: 0.3rem;
+}
+
+/* ========================================
+   FÓRMULAS
+   ======================================== */
+.formula {
+  margin-bottom: 1rem;
+}
+
+.formula p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.formula-box {
+  display: inline-block;
+  background-color: var(--color-formula);
+  color: var(--color-formula-text);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius);
+  letter-spacing: 0.02em;
+}
+
+.formula-box.grande {
+  display: block;
+  text-align: center;
+  font-size: 1.05rem;
+  padding: 0.9rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+   EJEMPLO
+   ======================================== */
+.ejemplo {
+  background-color: var(--color-ejemplo);
+  border: 1px solid var(--color-ejemplo-borde);
+  border-left: 4px solid var(--color-ejemplo-borde);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.ejemplo h4 {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a6a00;
+  margin-bottom: 0.75rem;
+}
+
+.ejemplo p,
+.ejemplo ul {
+  font-size: 0.97rem;
+  margin-bottom: 0.5rem;
+}
+
+.ejemplo ul {
+  padding-left: 1.4rem;
+}
+
+.ejemplo ul li {
+  margin-bottom: 0.3rem;
+}
+
+/* ========================================
+   CÁLCULO (dentro de ejemplo)
+   ======================================== */
+.calculo {
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-ejemplo-borde);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  font-family: var(--font-serif);
+  font-size: 0.97rem;
+  line-height: 2;
+}
+
+.calculo p {
+  margin: 0;
+}
+
+/* ========================================
+   TABLA
+   ======================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0 1rem;
+  font-size: 0.95rem;
+  overflow-x: auto;
+  display: block;
+}
+
+@media (min-width: 600px) {
+  table {
+    display: table;
+  }
+}
+
+thead tr {
+  background-color: var(--color-table-head);
+  color: #ffffff;
+}
+
+thead th {
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--color-table-alt);
+}
+
+tbody td {
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.total-row td {
+  background-color: var(--color-accent-soft);
+  color: var(--color-primary);
+  font-weight: 700;
+  border-top: 2px solid var(--color-accent);
+}
+
+/* ========================================
+   CONCLUSIÓN
+   ======================================== */
+.conclusion {
+  background-color: var(--color-conclusion);
+  border-left: 4px solid var(--color-conclusion-borde);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0.9rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.conclusion h4 {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #3a6b2a;
+  margin-bottom: 0.4rem;
+}
+
+.conclusion p {
+  font-size: 0.97rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ========================================
+   DIVISOR Y TEST
+   ======================================== */
+hr {
+  border: none;
+  border-top: 2px solid var(--color-border);
+  margin: 2.5rem 0;
+}
+
+#test-evaluacion {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-subtema-borde);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+#test-evaluacion h2 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 600px) {
+  .concepto {
+    padding: 1.25rem 1rem 1rem;
+  }
+ 
+  .formula-box {
+    font-size: 0.88rem;
+    padding: 0.5rem 0.9rem;
+  }
+ 
+  .formula-box.grande {
+    font-size: 0.88rem;
+    padding: 0.7rem 1rem;
+  }
+ 
+  header h1 {
+    font-size: 1.4rem;
+  }
+ 
+  thead th, tbody td {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.88rem;
+  }
+}
+ 
+/* ========================================
+   TEST DE EVALUACIÓN
+   ======================================== */
+.test-intro {
+  font-size: 0.97rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+ 
+.pregunta {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.3s;
+}
+ 
+.pregunta.correcta {
+  border-color: var(--color-conclusion-borde);
+  background-color: var(--color-conclusion);
+}
+ 
+.pregunta.incorrecta {
+  border-color: #d9534f;
+  background-color: #fff5f5;
+}
+ 
+.enunciado {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  color: var(--color-text);
+}
+ 
+.num-pregunta {
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-right: 0.3rem;
+}
+ 
+.opcion {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.97rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-bottom: 0.2rem;
+}
+ 
+.opcion:hover {
+  background-color: var(--color-accent-soft);
+}
+ 
+.opcion input[type="radio"] {
+  margin-top: 3px;
+  accent-color: var(--color-accent);
+  flex-shrink: 0;
+}
+ 
+.feedback {
+  margin-top: 0.75rem;
+  font-size: 0.92rem;
+  min-height: 1.2rem;
+}
+ 
+.feedback.correcto {
+  color: #2e7d20;
+  font-weight: 600;
+}
+ 
+.feedback.incorrecto {
+  color: #b03030;
+}
+ 
+.feedback.advertencia {
+  color: #9a6500;
+}
+ 
+.btn-evaluar {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.65rem 2rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+ 
+.btn-evaluar:hover {
+  background-color: var(--color-accent);
+}
+ 
+.btn-reintentar {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  color: var(--color-accent);
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  font-weight: 600;
+  padding: 0.6rem 1.75rem;
+  border: 1.5px solid var(--color-accent);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+ 
+.btn-reintentar:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+ 
+.resultado-test {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+ 
+.resultado-excelente {
+  background-color: var(--color-conclusion);
+  border: 1px solid var(--color-conclusion-borde);
+}
+ 
+.resultado-bien {
+  background-color: #fff8ec;
+  border: 1px solid var(--color-ejemplo-borde);
+}
+ 
+.resultado-revisar {
+  background-color: #fff5f5;
+  border: 1px solid #d9534f;
+}
+ 
+.puntaje {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  white-space: nowrap;
+}
+ 
+.mensaje-resultado {
+  font-size: 1rem;
+  color: var(--color-text);
+}
