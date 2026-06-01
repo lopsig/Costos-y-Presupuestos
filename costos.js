@@ -36,9 +36,30 @@ const respuestas = {
 // Evaluar el test al enviar
 const evaluarTest = (event) => {
   event.preventDefault();
-
+  let todasRespondidas = true
   let puntaje = 0;
+  
+  //Verificar que todas esten respondidas
+  for (let num = 1; num <= 5; num++) {
+    const nombre = "p" + num;
+    const seleccion = document.querySelector(`input[name="${nombre}"]:checked`);
+    const feedback = document.getElementById("feedback-" + num);
 
+    if (!seleccion) {
+      feedback.textContent = "⚠ Por favor selecciona una respuesta.";
+      feedback.className = "feedback advertencia";
+      todasRespondidas = false;
+    } else {
+      // Limpiar advertencia si ya respondió
+      feedback.textContent = "";
+      feedback.className = "feedback";
+    }
+  }
+
+  if (!todasRespondidas) return;
+
+
+  // Evaluar respuestas
   for (let num = 1; num <= 5; num++) {
     const pregunta  = document.getElementById('pregunta-' + num);
     const nombre   = 'p' + num;
