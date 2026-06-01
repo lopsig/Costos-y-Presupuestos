@@ -22,6 +22,14 @@ const respuestas = {
   p3: {
     correcta: 'b',
     explicacion: 'El punto de equilibrio es el nivel de ventas donde los ingresos igualan a los costos. En ese punto no hay ganancias ni pérdidas; a partir de ahí comienza la utilidad.'
+  },
+   p4: {
+    correcta: 'b',
+    explicacion: 'Los costos fijos se mantienen constantes sin importar si la empresa produce mucho o poco, como el alquiler o los sueldos administrativos.'
+  },
+  p5: {
+    correcta: 'c',
+    explicacion: 'La materia prima es un costo directo porque se puede asignar fácilmente a un producto específico. El alquiler y los sueldos administrativos son costos indirectos.'
   }
 };
 
@@ -31,7 +39,7 @@ const evaluarTest = (event) => {
 
   let puntaje = 0;
 
-  for (let num = 1; num <= 3; num++) {
+  for (let num = 1; num <= 5; num++) {
     const pregunta  = document.getElementById('pregunta-' + num);
     const nombre   = 'p' + num;
     const seleccion = document.querySelector(`input[name="${nombre}"]:checked`);
@@ -64,15 +72,15 @@ const evaluarTest = (event) => {
   const resultado = document.getElementById('resultado-test');
   resultado.style.display = 'flex';
 
-  if (puntaje === 3) {
+  if (puntaje === 5) {
     resultado.className = 'resultado-test resultado-excelente';
-    resultado.innerHTML = '<span class="puntaje">3 / 3</span><span class="mensaje-resultado">¡Excelente! Dominas todos los conceptos.</span>';
-  } else if (puntaje === 2) {
+    resultado.innerHTML = '<span class="puntaje">5 / 5</span><span class="mensaje-resultado">¡Excelente! Dominas todos los conceptos.</span>';
+  } else if (puntaje >= 3) {
     resultado.className = 'resultado-test resultado-bien';
-    resultado.innerHTML = '<span class="puntaje">2 / 3</span><span class="mensaje-resultado">¡Muy bien! Revisa la pregunta incorrecta.</span>';
+    resultado.innerHTML = `<span class="puntaje">${puntaje} / 5</span><span class="mensaje-resultado">¡Muy bien! Revisa las preguntas incorrectas.</span>`;
   } else {
     resultado.className = 'resultado-test resultado-revisar';
-    resultado.innerHTML = `<span class="puntaje">${puntaje} / 3</span><span class="mensaje-resultado">Repasa los temas e inténtalo de nuevo. ¡Tú puedes!</span>`;
+    resultado.innerHTML = `<span class="puntaje">${puntaje} / 5</span><span class="mensaje-resultado">Repasa los temas e inténtalo de nuevo. ¡Tú puedes!</span>`;
   }
 
 
@@ -83,7 +91,7 @@ const evaluarTest = (event) => {
 
 // Reiniciar el test
 function reiniciarTest() {
-  for (let num = 1; num <= 3; num++) {
+  for (let num = 1; num <= 5; num++) {
     const nombre = 'p' + num;
 
     document.querySelectorAll(`input[name="${nombre}"]`).forEach(i => {
