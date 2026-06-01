@@ -12,25 +12,30 @@ const mostrarSeccion = (idSeccion) => {
 // Respuestas correctas y explicaciones (OBJETO)
 const respuestas = {
   p1: {
-    correcta: 'b',
-    explicacion: 'La mano de obra representa el esfuerzo humano en la producción. No son las máquinas ni los materiales, sino las personas que trabajan para producir bienes o servicios.'
+    correcta: "b",
+    explicacion:
+      "La mano de obra representa el esfuerzo humano en la producción. No son las máquinas ni los materiales, sino las personas que trabajan para producir bienes o servicios.",
   },
   p2: {
-    correcta: 'b',
-    explicacion: 'El costeo de recetas calcula el costo total de los ingredientes. Es una herramienta muy usada en restaurantes y negocios de alimentos para fijar precios y controlar gastos.'
+    correcta: "b",
+    explicacion:
+      "El costeo de recetas calcula el costo total de los ingredientes. Es una herramienta muy usada en restaurantes y negocios de alimentos para fijar precios y controlar gastos.",
   },
   p3: {
-    correcta: 'b',
-    explicacion: 'El punto de equilibrio es el nivel de ventas donde los ingresos igualan a los costos. En ese punto no hay ganancias ni pérdidas; a partir de ahí comienza la utilidad.'
+    correcta: "b",
+    explicacion:
+      "El punto de equilibrio es el nivel de ventas donde los ingresos igualan a los costos. En ese punto no hay ganancias ni pérdidas; a partir de ahí comienza la utilidad.",
   },
-   p4: {
-    correcta: 'b',
-    explicacion: 'Los costos fijos se mantienen constantes sin importar si la empresa produce mucho o poco, como el alquiler o los sueldos administrativos.'
+  p4: {
+    correcta: "c",
+    explicacion:
+      "La materia prima está formada por los materiales que se transforman o incorporan al producto final, siendo un componente fundamental del costo de producción.",
   },
   p5: {
-    correcta: 'c',
-    explicacion: 'La materia prima es un costo directo porque se puede asignar fácilmente a un producto específico. El alquiler y los sueldos administrativos son costos indirectos.'
-  }
+    correcta: "b",
+    explicacion:
+      "'Alquiler del local, debido a que es un gasto que siempre debe pagarse",
+  },
 };
 
 // Evaluar el test al enviar
