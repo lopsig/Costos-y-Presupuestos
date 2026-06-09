@@ -543,7 +543,6 @@
         <h2>Registro de Materia Prima</h2>
         <p>Ingresa los ingredientes e insumos que utiliza el restaurante</p>
 
-        <!-- formulario de registro de materia prima -->
         <div class="formulario">
           <div class="campo">
             <label for="mp-nombre">Nombre del Producto</label>
@@ -595,6 +594,97 @@
 
           <tbody id="tabla-materia-prima"></tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- SECCION RECETAS -->
+    <section id="recetas">
+      <div class="seccion-sistema">
+        <h2>Registro de Recetas</h2>
+        <p>Arma las recetas del restaurante seleccionando los ingredientes registrados</p>
+
+        <div class="formulario">
+          <div class="campo">
+            <label for="rec-nombre">Nombre de la Receta</label>
+            <input type="text" id="rec-nombre" placeholder="Ej: Pastel de Chocolate">
+          </div>
+
+          <div class="campo">
+            <label for="rec-porciones">Número de Porciones</label>
+            <input type="number" id="rec-porciones" placeholder="Ej: 8" min="1">
+          </div>
+
+          <div class="campo">
+            <label for="rec-tiempo">Tiempo de preparación (minutos)</label>
+            <input type="number" id="rec-tiempo" placeholder="Ej: 45" min="1">
+          </div>
+
+          <div class="campo">
+            <label>Ingredientes</label>
+            <div id="lista-ingredientes"></div>
+            <button type="button" onclick="agregarIngrediente()">+ Agregar Ingredientes</button>
+          </div>
+
+          <button onclick="guardarReceta()">Guardar Receta</button>
+        </div>
+
+        <h3>Recetas Registradas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Porciones</th>
+              <th>Tiempo (min)</th>
+              <th>Ingredientes</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+
+          <tbody id="tabla-recetas"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCION CONFIGURACION -->
+    <section id="configuracion">
+      <div class="seccion-sistema">
+        <h2>Configuración</h2>
+        <p>Define los parámetros que se usarán para calcular el costo de producción</p>
+
+        <div class="formulario">
+          <div class="campo">
+            <label for="conf-mano-obra">Costo por hora de mano de obra ($)</label>
+            <input type="number" id="conf-mano-obra" placeholder="Ej: 2.50" min="0" step="0.01">
+          </div>
+
+          <div class="campo">
+            <label for="conf-indirectos"> Porcentaje de costos indirectos (%)</label>
+            <input type="number" id="conf-indirectos" placeholder="Ej: 15" min="0" max="100" step="1">
+          </div>
+
+          <button onclick="guardarConfiguracion()">Guardar Configuración</button>
+        </div>
+
+        <p id="msg-configuracion"></p>
+      </div>
+    </section>
+
+    <!-- SECCION COSTO DE PRODUCCION -->
+    <section id="costo-produccion">
+      <div class="seccion-sistema">
+        <h2>Costo de Producción</h2>
+        <p>Selecciona una receta para calcular su costo real de producción.</p>
+
+        <div class="campo">
+          <label for="sel-receta">Seleccionar Receta</label>
+          <select id="sel-receta">
+            <option value="">-- Selecciona una Receta --</option>
+          </select>
+        </div>
+
+        <button onclick="calcularCosto()">Calcular Costo</button>
+        
+        <div id="resultado-costo"></div>
       </div>
     </section>
 
