@@ -81,6 +81,7 @@ const evaluarTest = (event) => {
     // Bloquear opciones
     document.querySelectorAll(`input[name="${nombre}"]`).forEach(input => input.disabled = true);
 
+
     // Revisar si es correcto
     if (seleccion.value === respuestas[nombre].correcta) {
       puntaje++;
@@ -98,16 +99,23 @@ const evaluarTest = (event) => {
   const resultado = document.getElementById('resultado-test');
   resultado.style.display = 'flex';
 
+  //let texto = ""; Evaluacion
+
   if (puntaje === 5) {
     resultado.className = 'resultado-test resultado-excelente';
     resultado.innerHTML = '<span class="puntaje">5 / 5</span><span class="mensaje-resultado">¡Excelente! Dominas todos los conceptos.</span>';
+    // texto = "Excelete"; Evaluacion
   } else if (puntaje >= 3) {
-    resultado.className = 'resultado-test resultado-bien';
+    resultado.className = "resultado-test resultado-bien";
     resultado.innerHTML = `<span class="puntaje">${puntaje} / 5</span><span class="mensaje-resultado">¡Muy bien! Revisa las preguntas incorrectas.</span>`;
+    // texto = "Media"; Evaluacion
   } else {
-    resultado.className = 'resultado-test resultado-revisar';
+    resultado.className = "resultado-test resultado-revisar";
     resultado.innerHTML = `<span class="puntaje">${puntaje} / 5</span><span class="mensaje-resultado">Repasa los temas e inténtalo de nuevo. ¡Tú puedes!</span>`;
+    // texto = "Incorrecto"; Evaluacion
   }
+
+  // alert(texto); Evaluacion
 
 
   // Cambiar botones

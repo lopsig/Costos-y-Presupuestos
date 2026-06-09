@@ -13,11 +13,17 @@
     <header>
       <h1>COSTOS Y PRESUPUESTOS</h1>
     </header>
-
+    
+    <!-- BOTONES DE NAVEGACIÓN -->
     <nav>
       <button onclick="mostrarSeccion('conceptos')">Conceptos</button>
+      <button onclick="mostrarSeccion('materia-prima')">Materia prima</button>
+      <button onclick="mostrarSeccion('recetas')">Recetas</button>
+      <button onclick="mostrarSeccion('configuracion')">Configuración</button>
+      <button onclick="mostrarSeccion('costo-produccion')">Costo de Producción</button>
     </nav>
 
+    <!-- SECCION CONCEPTOS -->
     <section id="conceptos">
 
       <div class="concepto" id="costo-fijo">
@@ -527,12 +533,72 @@
 
         <div id="resultado-test" class="resultado-test" style="display:none;"></div>
 
-        <button id="btn-reintentar" class="btn-reintentar" onclick="reiniciarTest()" style="display:none;">Volver a
-          intentar</button>
-
+        <button id="btn-reintentar" class="btn-reintentar" onclick="reiniciarTest()" style="display:none;">Volver a Intentar</button>
       </div>
-
     </section>
+
+    <!-- SECCION MATERIA PRIMA -->
+    <section id="materia-prima">
+      <div class="seccion-sistema">
+        <h2>Registro de Materia Prima</h2>
+        <p>Ingresa los ingredientes e insumos que utiliza el restaurante</p>
+
+        <!-- formulario de registro de materia prima -->
+        <div class="formulario">
+          <div class="campo">
+            <label for="mp-nombre">Nombre del Producto</label>
+            <input type="text" id="mp-nombre" placeholder="Ej: Harina">
+          
+          </div>
+          <div class="campo">
+            <label for="mp-unidad">Unidad de Compra</label>
+            <select id="mp-unidad">
+              <option value="kg">Kilogramo (kg)</option>
+              <option value="kg">Gramo (g)</option>
+              <option value="kg">Litro (l)</option>
+              <option value="kg">Mililitro (ml)</option>
+              <option value="kg">Unidad (u)</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="mp-cantidad">Cantidad de Compra</label>
+            <input type="number" id="mp-cantidad" placeholder="Ej: 1" min="0" step="0.01">
+          </div>
+
+          <div class="campo">
+            <label for="mp-precio">Precio de Compra ($)</label>
+            <input type="number" id="mp-precio" placeholder="Ej: 2.5" min="0" step="0.01">
+          </div>
+
+          <div class="campo">
+            <label for="mp-merma">Porcentaje de Merma (%)</label>
+            <input type="number" id="mp-merma" placeholder="Ej: 10" min="0" max="100" step="1">
+          </div>
+
+          <button onclick="guardarMateriaPrima()">Agregar Materia Prima</button>
+        </div>
+
+        <h3>Materias Primas Registradas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Unidad</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Merma</th>
+              <th>Precio real x unidad</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+
+          <tbody id="tabla-materia-prima"></tbody>
+        </table>
+      </div>
+    </section>
+
+    
 
     <script src="costos.js"></script>
 </body>
