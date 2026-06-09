@@ -550,3 +550,296 @@ hr {
   font-size: 1rem;
   color: var(--color-text);
 }
+
+/* ========================================
+   SISTEMA DE COSTEO — Secciones nuevas
+   ======================================== */
+ 
+/* Contenedor principal de cada sección del sistema
+   Da padding, fondo blanco y sombra suave */
+.seccion-sistema {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+ 
+.seccion-sistema h2 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+ 
+.seccion-sistema > p {
+  font-size: 0.97rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+ 
+.seccion-sistema h3 {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 1.5rem 0 0.75rem;
+}
+ 
+/* ========================================
+   FORMULARIOS DEL SISTEMA
+   ======================================== */
+ 
+/* Contenedor del formulario con fondo gris claro */
+.formulario {
+  background-color: var(--color-subtema);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+ 
+/* Cada campo label + input ocupa un espacio mínimo */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 180px;
+  flex: 1;
+}
+ 
+.campo label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+ 
+.campo input,
+.campo select {
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color 0.2s;
+}
+ 
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+ 
+/* Botones generales del sistema */
+.formulario button,
+.seccion-sistema > button {
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  font-weight: 600;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.55rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-end;
+}
+ 
+.formulario button:hover,
+.seccion-sistema > button:hover {
+  background-color: var(--color-accent);
+}
+ 
+/* ========================================
+   FILA DE INGREDIENTE (sección Recetas)
+   Cada fila tiene: select + cantidad + botón X
+   ======================================== */
+.fila-ingrediente {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+ 
+.fila-ingrediente select,
+.fila-ingrediente input {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  padding: 0.45rem 0.7rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+ 
+.fila-ingrediente select {
+  flex: 2;
+  min-width: 160px;
+}
+ 
+.fila-ingrediente input {
+  flex: 1;
+  min-width: 90px;
+}
+ 
+/* Botón X para eliminar un ingrediente de la lista */
+.fila-ingrediente button {
+  font-size: 0.85rem;
+  font-weight: 700;
+  background-color: #d9534f;
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+ 
+.fila-ingrediente button:hover {
+  background-color: #b03030;
+}
+ 
+/* Botón de agregar ingrediente (dentro del campo) */
+#lista-ingredientes + button {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+ 
+#lista-ingredientes + button:hover {
+  background-color: var(--color-primary);
+}
+ 
+/* ========================================
+   BOTONES DE ACCIÓN EN TABLAS (Eliminar)
+   ======================================== */
+tbody button {
+  font-size: 0.82rem;
+  font-weight: 600;
+  background-color: #d9534f;
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+ 
+tbody button:hover {
+  background-color: #b03030;
+}
+ 
+/* ========================================
+   SECCIÓN: CONFIGURACIÓN
+   Mensaje de confirmación al guardar
+   ======================================== */
+#msg-configuracion {
+  margin-top: 1rem;
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: #2e7d20;
+}
+ 
+/* ========================================
+   SECCIÓN: COSTO DE PRODUCCIÓN
+   Selector de receta y área de resultados
+   ======================================== */
+#costo-produccion .campo {
+  max-width: 350px;
+  margin-bottom: 1rem;
+}
+ 
+#costo-produccion > .seccion-sistema > button {
+  margin-bottom: 1.5rem;
+}
+ 
+/* Contenedor del desglose de costos */
+#resultado-costo {
+  margin-top: 1.5rem;
+}
+ 
+#resultado-costo h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+ 
+#resultado-costo h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+ 
+/* Resumen final de costos con fondo destacado */
+.resumen-costos {
+  background-color: var(--color-accent-soft);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+  line-height: 2;
+}
+ 
+.resumen-costos p {
+  font-size: 0.97rem;
+  color: var(--color-text);
+}
+ 
+.resumen-costos hr {
+  margin: 0.75rem 0;
+  border-top: 1px solid var(--color-accent);
+}
+ 
+/* La última línea del resumen (costo por porción) en negrita y más grande */
+.resumen-costos p:last-child {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+ 
+/* ========================================
+   RESPONSIVE — Secciones del sistema
+   ======================================== */
+@media (max-width: 600px) {
+ 
+  .formulario {
+    flex-direction: column;
+  }
+ 
+  .campo {
+    min-width: 100%;
+  }
+ 
+  .fila-ingrediente {
+    flex-direction: column;
+    align-items: stretch;
+  }
+ 
+  .seccion-sistema {
+    padding: 1.25rem 1rem;
+  }
+}
