@@ -151,7 +151,7 @@
             <li>Etiqueta $0.50</li>
           </ul></p>
           <p>Total</p>
-          <p> $$ 4 + 0.50 + 0.50 = 5</p>
+          <p> $$ 4 + 0.50 + 0.50 = 5 $$</p>
           <p><strong>Costos Indirectos</strong></p>
           <p> <ul>
             <li>Energía eléctrica</li>
@@ -507,25 +507,42 @@
             </label>
             <p class="feedback" id="feedback-3"></p>
           </div>
+
           <!-- Pregunta 4 -->
           <div class="pregunta" id="pregunta-4">
-            <p class="enunciado"><span class="num-pregunta">4.</span> ¿Cuál de las siguientes afirmaciones es correcta respecto a los <strong>costos de materia prima</strong>?</p>
-            <label class="opcion"><input type="radio" name="p4" value="a">Son gastos que permanecen constantes independientemente de la producción</label>
-            <label class="opcion"><input type="radio" name="p4" value="b">Corresponden únicamente a salarios administrativos.</label>
-            <label class="opcion"><input type="radio" name="p4" value="c">Representan el valor de los materiales utilizados para fabricar un producto.</label>
+            <p class="enunciado">
+              <span class="num-pregunta">4.</span>
+             ¿Cuál de las siguientes afirmaciones es correcta respecto a los costos de materia prima?
+            </p>
+            <label class="opcion">
+              <input type="radio" name="p4" value="a"> Son gastos que permanecen constantes independientemente de la producción.
+            </label>
+            <label class="opcion">
+              <input type="radio" name="p4" value="b"> Corresponden únicamente a salarios administrativos.
+            </label>
+            <label class="opcion">
+              <input type="radio" name="p4" value="c"> Representan el valor de los materiales utilizados para fabricar un producto.
+            </label>
             <p class="feedback" id="feedback-4"></p>
           </div>
 
           <!-- Pregunta 5 -->
           <div class="pregunta" id="pregunta-5">
-            <p class="enunciado"><span class="num-pregunta">5.</span> ¿Cuál de los siguientes es un <strong>costo fijo</strong>?</p>
-            <label class="opcion"><input type="radio" name="p5" value="a"> Harina para hacer pan</label>
-            <label class="opcion"><input type="radio" name="p5" value="b"> Alquiler del local</label>
-            <label class="opcion"><input type="radio" name="p5" value="c"> Envases de un producto</label>
+            <p class="enunciado">
+              <span class="num-pregunta">5.</span>
+             ¿Cuál de los siguientes es un costo fijo?
+            </p>
+            <label class="opcion">
+              <input type="radio" name="p5" value="a"> Harina para hacer pan.
+            </label>
+            <label class="opcion">
+              <input type="radio" name="p5" value="b"> Alquiler del local.
+            </label>
+            <label class="opcion">
+              <input type="radio" name="p5" value="c"> Envases de un producto.
+            </label>
             <p class="feedback" id="feedback-5"></p>
           </div>
-
-
 
           <button type="submit" class="btn-evaluar">Enviar respuestas</button>
 
@@ -690,6 +707,167 @@
 
     
 
+<<<<<<< Updated upstream
+=======
+    <!-- SECCION MATERIA PRIMA -->
+    <section id="materia-prima">
+      <div class="seccion-sistema">
+        <h2>Registro de Materia Prima</h2>
+        <p>Ingresa los ingredientes e insumos que utiliza el restaurante</p>
+
+        <div class="formulario">
+          <div class="campo">
+            <label for="mp-nombre">Nombre del Producto</label>
+            <input type="text" id="mp-nombre" placeholder="Ej: Harina">
+          
+          </div>
+          <div class="campo">
+            <label for="mp-unidad">Unidad de Compra</label>
+            <select id="mp-unidad">
+              <option value="kg">Kilogramo (kg)</option>
+              <option value="kg">Gramo (g)</option>
+              <option value="kg">Litro (l)</option>
+              <option value="kg">Mililitro (ml)</option>
+              <option value="kg">Unidad (u)</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="mp-cantidad">Cantidad de Compra</label>
+            <input type="number" id="mp-cantidad" placeholder="Ej: 1" min="0" step="0.01">
+          </div>
+
+          <div class="campo">
+            <label for="mp-precio">Precio de Compra ($)</label>
+            <input type="number" id="mp-precio" placeholder="Ej: 2.5" min="0" step="0.01">
+          </div>
+
+          <div class="campo">
+            <label for="mp-merma">Porcentaje de Merma (%)</label>
+            <input type="number" id="mp-merma" placeholder="Ej: 10" min="0" max="100" step="1">
+          </div>
+
+          <button onclick="guardarMateriaPrima()">Agregar Materia Prima</button>
+        </div>
+
+        <h3>Materias Primas Registradas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Unidad</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Merma</th>
+              <th>Precio real x unidad</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+
+          <tbody id="tabla-materia-prima"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCION RECETAS -->
+    <section id="recetas">
+      <div class="seccion-sistema">
+        <h2>Registro de Recetas</h2>
+        <p>Arma las recetas del restaurante seleccionando los ingredientes registrados</p>
+
+        <div class="formulario">
+          <div class="campo">
+            <label for="rec-nombre">Nombre de la Receta</label>
+            <input type="text" id="rec-nombre" placeholder="Ej: Pastel de Chocolate">
+          </div>
+
+          <div class="campo">
+            <label for="rec-porciones">Número de Porciones</label>
+            <input type="number" id="rec-porciones" placeholder="Ej: 8" min="1">
+          </div>
+
+          <div class="campo">
+            <label for="rec-tiempo">Tiempo de preparación (minutos)</label>
+            <input type="number" id="rec-tiempo" placeholder="Ej: 45" min="1">
+          </div>
+
+          <div class="campo">
+            <label>Ingredientes</label>
+            <div id="lista-ingredientes"></div>
+            <button type="button" onclick="agregarIngrediente()">+ Agregar Ingredientes</button>
+          </div>
+
+          <button onclick="guardarReceta()">Guardar Receta</button>
+        </div>
+
+        <h3>Recetas Registradas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Porciones</th>
+              <th>Tiempo (min)</th>
+              <th>Ingredientes</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+
+          <tbody id="tabla-recetas"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCION CONFIGURACION -->
+    <section id="configuracion">
+      <div class="seccion-sistema">
+        <h2>Configuración</h2>
+        <p>Define los parámetros que se usarán para calcular el costo de producción</p>
+
+        <div class="formulario">
+          <div class="campo">
+            <label for="conf-mano-obra">Costo por hora de mano de obra ($)</label>
+            <input type="number" id="conf-mano-obra" placeholder="Ej: 2.50" min="0" step="0.01">
+          </div>
+
+          <div class="campo">
+            <label for="conf-indirectos"> Porcentaje de costos indirectos (%)</label>
+            <input type="number" id="conf-indirectos" placeholder="Ej: 15" min="0" max="100" step="1">
+          </div>
+
+           <div class="campo">
+          <label>Margen de ganancia (%)</label>
+          <input type="number" id="conf-margen"value="40" min="0">
+          </div>
+
+          <button onclick="guardarConfiguracion()">Guardar Configuración</button>
+        </div>
+
+        <p id="msg-configuracion"></p>
+      </div>
+    </section>
+
+    <!-- SECCION COSTO DE PRODUCCION -->
+    <section id="costo-produccion">
+      <div class="seccion-sistema">
+        <h2>Costo de Producción</h2>
+        <p>Selecciona una receta para calcular su costo real de producción.</p>
+
+        <div class="campo">
+          <label for="sel-receta">Seleccionar Receta</label>
+          <select id="sel-receta">
+            <option value="">-- Selecciona una Receta --</option>
+          </select>
+        </div>
+
+        <button onclick="calcularCosto()">Calcular Costo</button>
+        
+        <div id="resultado-costo"></div>
+      </div>
+    </section>
+
+    
+
+>>>>>>> Stashed changes
     <script src="costos.js"></script>
 </body>
 

@@ -24,20 +24,17 @@ const respuestas = {
       "El costeo de recetas calcula el costo total de los ingredientes. Es una herramienta muy usada en restaurantes y negocios de alimentos para fijar precios y controlar gastos.",
   },
   p3: {
-    correcta: "b",
-    explicacion:
-      "El punto de equilibrio es el nivel de ventas donde los ingresos igualan a los costos. En ese punto no hay ganancias ni pérdidas; a partir de ahí comienza la utilidad.",
+    correcta: 'b',
+    explicacion: 'El punto de equilibrio es el nivel de ventas donde los ingresos igualan a los costos. En ese punto no hay ganancias ni pérdidas; a partir de ahí comienza la utilidad.'
   },
   p4: {
-    correcta: "c",
-    explicacion:
-      "La materia prima está formada por los materiales que se transforman o incorporan al producto final, siendo un componente fundamental del costo de producción.",
+    correcta: 'c',
+    explicacion: 'La materia prima está formada por los materiales que se transforman o incorporan al producto final, siendo un componente fundamental del costo de producción.'
   },
   p5: {
-    correcta: "b",
-    explicacion:
-      "'Alquiler del local, debido a que es un gasto que siempre debe pagarse",
-  },
+    correcta: 'b',
+    explicacion: 'Alquiler del local, debido a que es un gasto que siempre debe pagarse'
+  }
 };
 
 // Evaluar el test al enviar
@@ -46,9 +43,9 @@ const evaluarTest = (event) => {
   let todasRespondidas = true;
   let puntaje = 0;
 
-  //Verificar que todas esten respondidas
   for (let num = 1; num <= 5; num++) {
-    const nombre = "p" + num;
+    const pregunta  = document.getElementById('pregunta-' + num);
+    const nombre   = 'p' + num;
     const seleccion = document.querySelector(`input[name="${nombre}"]:checked`);
     const feedback = document.getElementById("feedback-" + num);
 
@@ -101,21 +98,15 @@ const evaluarTest = (event) => {
   const resultado = document.getElementById("resultado-test");
   resultado.style.display = "flex";
 
-  //let texto = ""; Evaluacion
-
   if (puntaje === 5) {
-    resultado.className = "resultado-test resultado-excelente";
-    resultado.innerHTML =
-      '<span class="puntaje">5 / 5</span><span class="mensaje-resultado">¡Excelente! Dominas todos los conceptos.</span>';
-    // texto = "Excelete"; Evaluacion
+    resultado.className = 'resultado-test resultado-excelente';
+    resultado.innerHTML = '<span class="puntaje">5 / 5</span><span class="mensaje-resultado">¡Excelente! Dominas todos los conceptos.</span>';
   } else if (puntaje >= 3) {
-    resultado.className = "resultado-test resultado-bien";
-    resultado.innerHTML = `<span class="puntaje">${puntaje} / 5</span><span class="mensaje-resultado">¡Muy bien! Revisa las preguntas incorrectas.</span>`;
-    // texto = "Media"; Evaluacion
+    resultado.className = 'resultado-test resultado-bien';
+    resultado.innerHTML = '<span class="puntaje"> ${puntaje} / 5 </span><span class="mensaje-resultado">¡Muy bien! Revisa la pregunta incorrecta.</span>';
   } else {
-    resultado.className = "resultado-test resultado-revisar";
-    resultado.innerHTML = `<span class="puntaje">${puntaje} / 5</span><span class="mensaje-resultado">Repasa los temas e inténtalo de nuevo. ¡Tú puedes!</span>`;
-    // texto = "Incorrecto"; Evaluacion
+    resultado.className = 'resultado-test resultado-revisar';
+    resultado.innerHTML = `<span class="puntaje">${puntaje} / 5 </span><span class="mensaje-resultado">Repasa los temas e inténtalo de nuevo. ¡Tú puedes!</span>`;
   }
 
   // alert(texto); Evaluacion
@@ -128,7 +119,7 @@ const evaluarTest = (event) => {
 // Reiniciar el test
 function reiniciarTest() {
   for (let num = 1; num <= 5; num++) {
-    const nombre = "p" + num;
+    const nombre = 'p' + num;
 
     document.querySelectorAll(`input[name="${nombre}"]`).forEach((i) => {
       i.checked = false;
@@ -143,6 +134,7 @@ function reiniciarTest() {
   const resultado = document.getElementById("resultado-test");
   resultado.style.display = "none";
   resultado.className = "resultado-test";
+
 
   document.querySelector(".btn-evaluar").style.display = "inline-block";
   document.getElementById("btn-reintentar").style.display = "none";
@@ -204,6 +196,7 @@ let recetas = [
 let configuracion = {
   costoHoraManoObra: 2.5,
   porcentajeIndirectos: 15,
+  margenGanancia: 40
 };
 
 let proximoIdMateria = 6;
@@ -275,6 +268,7 @@ const renderTablaMateriaPrima = () => {
     `;
   }).join("");
 }
+
 
 
 // -------SECCION RECETAS-------
@@ -427,9 +421,10 @@ function guardarConfiguracion() {
  
   const costoManoObra  = parseFloat(document.getElementById('conf-mano-obra').value);
   const porcentajeInd  = parseFloat(document.getElementById('conf-indirectos').value);
+  const margenGanancia = parseFloat(document.getElementById('conf-margen').value);
  
   // Validar que los valores sean números válidos
-  if (isNaN(costoManoObra) || isNaN(porcentajeInd)) {
+  if (isNaN(costoManoObra) || isNaN(porcentajeInd) || isNaN(margenGanancia)) {
     alert('Por favor ingresa valores válidos en la configuración.');
     return;
   }
@@ -437,6 +432,8 @@ function guardarConfiguracion() {
   // Actualizar el objeto de configuración
   configuracion.costoHoraManoObra    = costoManoObra;
   configuracion.porcentajeIndirectos = porcentajeInd;
+  configuracion.margenGanancia = margenGanancia;
+
  
   // Mostrar mensaje de confirmación
   const msg = document.getElementById('msg-configuracion');
@@ -512,7 +509,10 @@ function calcularCosto() {
  
   // --- PASO 6: Calcular el costo por porción ---
   const costoPorcion = costoTotal / receta.porciones;
- 
+
+  // -- paso 7: Calcular precio de venta ---
+  const precioVenta = costoPorcion * (1 + configuracion.margenGanancia / 100);
+
   // --- Mostrar el desglose completo en pantalla ---
   const div = document.getElementById('resultado-costo');
   div.innerHTML = `
@@ -541,6 +541,7 @@ function calcularCosto() {
       <hr>
       <p>Costo total de la receta: <strong>$${costoTotal.toFixed(2)}</strong></p>
       <p>Costo por porción (${receta.porciones} porciones): <strong>$${costoPorcion.toFixed(2)}</strong></p>
+      <p>Margen aplicado (${configuracion.margenGanancia}%): <strong>$${precioVenta.toFixed(2)}</strong></p>
     </div>
   `;
 }
@@ -560,3 +561,6 @@ actualizarSelectorRecetas();
 // Cargar los valores de configuración en el formulario
 document.getElementById('conf-mano-obra').value  = configuracion.costoHoraManoObra;
 document.getElementById('conf-indirectos').value = configuracion.porcentajeIndirectos;
+document.getElementById('conf-margen').value = configuracion.margenGanancia;
+
+
