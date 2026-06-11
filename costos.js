@@ -170,6 +170,33 @@ let recetas = [
       { idMateria: 5, cantidad: 0.1 },
     ],
   },
+
+   {
+    id: 2,
+    nombre: "Pan de leche",
+    porciones: 12,
+    tiempo: 30,
+    ingredientes: [
+      { idMateria: 1, cantidad: 0.6 },
+      { idMateria: 2, cantidad: 2 },
+      { idMateria: 3, cantidad: 0.3 },
+      { idMateria: 4, cantidad: 0.1 },
+      { idMateria: 5, cantidad: 0.05 },
+    ],
+  },
+
+  {
+    id: 3,
+    nombre: "Galletas de mantequilla",
+    porciones: 20,
+    tiempo: 25,
+    ingredientes: [
+      { idMateria: 1, cantidad: 0.4 },
+      { idMateria: 2, cantidad: 2 },
+      { idMateria: 4, cantidad: 0.2 },
+      { idMateria: 5, cantidad: 0.15 },
+    ],
+  },
 ];
 
 let configuracion = {
@@ -179,7 +206,7 @@ let configuracion = {
 };
 
 let proximoIdMateria = 6;
-let proximoIdReceta = 2;
+let proximoIdReceta = 4;
 
 // -------SECCION MATERIA PRIMA-------
 
