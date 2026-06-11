@@ -276,8 +276,7 @@ const renderTablaMateriaPrima = () => {
 }
 
 
-// -------SECCION RECETAS-------
-// ============================================
+
 // SECCIÓN: RECETAS
 // ============================================
  
@@ -530,7 +529,7 @@ function calcularCosto() {
           <th>Ingrediente</th>
           <th>Cantidad usada</th>
           <th>Merma</th>
-          <th>Costo</th>
+          <th>Precio Unitario Real</th>
         </tr>
       </thead>
       <tbody>
