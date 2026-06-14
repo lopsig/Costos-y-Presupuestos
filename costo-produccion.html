@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Costo de Producción — Costos Y Presupuestos</title>
+  <link rel="stylesheet" href="costos.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>COSTOS Y PRESUPUESTOS</h1>
+  </header>
+
+  <!-- NAV: links a cada página -->
+  <nav>
+    <a href="index.html">Conceptos</a>
+    <a href="materia-prima.html">Materia Prima</a>
+    <a href="recetas.html">Recetas</a>
+    <a href="configuracion.html">Configuración</a>
+    <a href="costo-produccion.html">Costo de Producción</a>
+  </nav>
+
+  <!-- SECCIÓN: COSTO DE PRODUCCIÓN -->
+  <section id="costo-produccion" class="activa">
+    <div class="seccion-sistema">
+      <h2>Costo de Producción</h2>
+      <p>Selecciona una receta para calcular su costo real de producción.</p>
+
+      <!-- Selector de receta, se llena dinámicamente con JS -->
+      <div class="campo">
+        <label for="sel-receta">Seleccionar receta</label>
+        <select id="sel-receta">
+          <option value="">-- Selecciona una receta --</option>
+        </select>
+      </div>
+
+      <button onclick="calcularCosto()">Calcular Costo</button>
+
+      <!-- Área donde JS muestra el desglose completo -->
+      <div id="resultado-costo"></div>
+
+    </div>
+  </section>
+
+  <script src="datos.js"></script>
+  <script src="navegacion.js"></script>
+  <script src="costo.js"></script>
+</body>
+
+</html>

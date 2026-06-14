@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materia Prima — Costos Y Presupuestos</title>
+  <link rel="stylesheet" href="costos.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>COSTOS Y PRESUPUESTOS</h1>
+  </header>
+
+  <!-- NAV: links a cada página -->
+  <nav>
+    <a href="index.html">Conceptos</a>
+    <a href="materia-prima.html">Materia Prima</a>
+    <a href="recetas.html">Recetas</a>
+    <a href="configuracion.html">Configuración</a>
+    <a href="costo-produccion.html">Costo de Producción</a>
+  </nav>
+
+  <!-- SECCIÓN: MATERIA PRIMA -->
+  <section id="materia-prima" class="activa">
+    <div class="seccion-sistema">
+      <h2>Registro de Materia Prima</h2>
+      <p>Ingresa los ingredientes e insumos que utiliza el restaurante.</p>
+
+      <!-- Formulario de registro -->
+      <div class="formulario">
+
+        <div class="campo">
+          <label for="mp-nombre">Nombre del producto</label>
+          <input type="text" id="mp-nombre" placeholder="Ej: Harina">
+        </div>
+
+        <div class="campo">
+          <label for="mp-unidad">Unidad de compra</label>
+          <select id="mp-unidad">
+            <option value="kg">Kilogramo (kg)</option>
+            <option value="g">Gramo (g)</option>
+            <option value="litro">Litro (l)</option>
+            <option value="ml">Mililitro (ml)</option>
+            <option value="unidad">Unidad (u)</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="mp-cantidad">Cantidad de compra</label>
+          <input type="number" id="mp-cantidad" placeholder="Ej: 1" min="0" step="0.01">
+        </div>
+
+        <div class="campo">
+          <label for="mp-precio">Precio de compra ($)</label>
+          <input type="number" id="mp-precio" placeholder="Ej: 2.50" min="0" step="0.01">
+        </div>
+
+        <div class="campo">
+          <label for="mp-merma">Porcentaje de merma (%)</label>
+          <input type="number" id="mp-merma" placeholder="Ej: 10" min="0" max="100" step="1">
+        </div>
+
+        <!-- El texto del botón cambia según si se está creando o editando -->
+        <button class="btn-guardar" onclick="guardarMateriaPrima()">Agregar Materia Prima</button>
+
+      </div>
+
+      <!-- Tabla de materias primas registradas -->
+      <h3>Materias Primas Registradas</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Merma %</th>
+            <th>Precio real x unidad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-materia-prima"></tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <!-- Primero datos.js para que las variables estén disponibles -->
+  <script src="datos.js"></script>
+  <script src="navegacion.js"></script>
+  <script src="materias.js"></script>
+</body>
+
+</html>

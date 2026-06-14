@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetas — Costos Y Presupuestos</title>
+  <link rel="stylesheet" href="costos.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>COSTOS Y PRESUPUESTOS</h1>
+  </header>
+
+  <!-- NAV: links a cada página -->
+  <nav>
+    <a href="index.html">Conceptos</a>
+    <a href="materia-prima.html">Materia Prima</a>
+    <a href="recetas.html">Recetas</a>
+    <a href="configuracion.html">Configuración</a>
+    <a href="costo-produccion.html">Costo de Producción</a>
+  </nav>
+
+  <!-- SECCIÓN: RECETAS -->
+  <section id="recetas" class="activa">
+    <div class="seccion-sistema">
+      <h2>Registro de Recetas</h2>
+      <p>Arma las recetas del restaurante seleccionando los ingredientes registrados.</p>
+
+      <!-- Formulario de registro de receta -->
+      <div class="formulario">
+
+        <div class="campo">
+          <label for="rec-nombre">Nombre de la receta</label>
+          <input type="text" id="rec-nombre" placeholder="Ej: Pastel de chocolate">
+        </div>
+
+        <div class="campo">
+          <label for="rec-porciones">Número de porciones</label>
+          <input type="number" id="rec-porciones" placeholder="Ej: 8" min="1">
+        </div>
+
+        <div class="campo">
+          <label for="rec-tiempo">Tiempo de preparación (minutos)</label>
+          <input type="number" id="rec-tiempo" placeholder="Ej: 45" min="1">
+        </div>
+
+        <!-- Contenedor donde JS inserta las filas de ingredientes dinámicamente -->
+        <div class="campo">
+          <label>Ingredientes</label>
+          <div id="lista-ingredientes"></div>
+          <button type="button" onclick="agregarIngrediente()">+ Agregar ingrediente</button>
+        </div>
+
+        <button class="btn-guardar-receta" onclick="guardarReceta()">Guardar Receta</button>
+
+      </div>
+
+      <!-- Tabla de recetas registradas -->
+      <h3>Recetas Registradas</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Porciones</th>
+            <th>Tiempo (min)</th>
+            <th>Ingredientes</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-recetas"></tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <script src="datos.js"></script>
+  <script src="navegacion.js"></script>
+  <script src="recetas.js"></script>
+</body>
+
+</html>
