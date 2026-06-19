@@ -33,8 +33,42 @@ const materiasPrimasDefault = [
     precio: 4.5,
     merma: 3,
   },
+
+  {
+    id: 6,
+    nombre: "Zanahoria",
+    unidad: "kg",
+    cantidad: 1,
+    precio: 0.8,
+    merma: 15,
+  }, // 15% de merma por la cáscara y puntas
+  {
+    id: 7,
+    nombre: "Aceite Vegetal",
+    unidad: "litro",
+    cantidad: 1,
+    precio: 2.2,
+    merma: 0,
+  },
+  {
+    id: 8,
+    nombre: "Nueces",
+    unidad: "kg",
+    cantidad: 0.5,
+    precio: 5.0,
+    merma: 2,
+  },
+  {
+    id: 9,
+    nombre: "Polvo de hornear",
+    unidad: "kg",
+    cantidad: 0.25,
+    precio: 1.1,
+    merma: 0,
+  },
 ];
 
+// Datos quemados de recetas (se usan solo la primera vez)
 // Datos quemados de recetas (se usan solo la primera vez)
 const recetasDefault = [
   {
@@ -50,8 +84,22 @@ const recetasDefault = [
       { idMateria: 5, cantidad: 0.1 },
     ],
   },
+  {
+    id: 2,
+    nombre: "Pastel de Zanahoria",
+    porciones: 10, // Rinde para 10 porciones
+    tiempo: 60, // 60 minutos de preparación y horneado
+    ingredientes: [
+      { idMateria: 1, cantidad: 0.3 }, // 300g de Harina (ID 1)
+      { idMateria: 4, cantidad: 0.2 }, // 200g de Azúcar (ID 4)
+      { idMateria: 2, cantidad: 4 }, // 4 Huevos (ID 2)
+      { idMateria: 7, cantidad: 0.2 }, // 200ml de Aceite Vegetal (ID 7)
+      { idMateria: 6, cantidad: 0.35 }, // 350g de Zanahoria rallada (ID 6)
+      { idMateria: 8, cantidad: 0.08 }, // 80g de Nueces picadas (ID 8)
+      { idMateria: 9, cantidad: 0.015 }, // 15g de Polvo de hornear (ID 9)
+    ],
+  },
 ];
-
 // Configuración por defecto (se usa solo la primera vez)
 const configuracionDefault = {
   costoHoraManoObra: 2.5,

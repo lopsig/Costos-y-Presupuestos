@@ -3,6 +3,9 @@
 // Funciones para el cálculo del costo de producción
 // ============================================
 
+//-----EVALUACION-----
+window.recetaActivaGlobal = null;
+
 // actualizarSelectorRecetas: llena el select con las recetas disponibles
 function actualizarSelectorRecetas() {
   const select = document.getElementById("sel-receta");
@@ -26,6 +29,8 @@ function calcularCosto() {
     alert("Receta no encontrada.");
     return;
   }
+//------EVALUACION-------
+  window.recetaActivaGlobal = receta;
 
   // --- PASO 1: Costo de ingredientes con merma ---
   let costoIngredientes = 0;
@@ -42,12 +47,19 @@ function calcularCosto() {
     const costoIngrediente = precioRealPorUnidad * ing.cantidad;
     costoIngredientes += costoIngrediente;
 
+
+    //-------EVALUACION-----------
+    const precioSinMerma = mp.precio / mp.cantidad;
+    const costoSinMerma = precioSinMerma * ing.cantidad;
+    const costoMerma = costoIngrediente - costoSinMerma;
+
+    const stockDisponible = mp.cantidad;
+
     detalleIngredientes += `
       <tr>
         <td>${mp.nombre}</td>
         <td>${ing.cantidad} ${mp.unidad}</td>
-        <td>${mp.merma}%</td>
-        <td>$${costoIngrediente.toFixed(4)}</td>
+        <td>${stockDisponible} ${mp.unidad}</td> <td>$${costoMerma.toFixed(4)}</td>   <td>$${costoIngrediente.toFixed(4)}</td>
       </tr>
     `;
   });
@@ -75,6 +87,7 @@ function calcularCosto() {
   const precioVenta = costoPorcion * (1 + configuracion.margenGanancia / 100);
 
   // --- Mostrar desglose en pantalla ---
+  //-----EVALUACION------
   document.getElementById("resultado-costo").innerHTML = `
     <h3>Desglose de costos: ${receta.nombre}</h3>
 
@@ -84,8 +97,9 @@ function calcularCosto() {
         <tr>
           <th>Ingrediente</th>
           <th>Cantidad usada</th>
-          <th>Merma</th>
-          <th>Costo</th>
+          <th>Stock Disponible</th>
+          <th>Costo Merma</th>
+          <th>Costo Total</th>
         </tr>
       </thead>
       <tbody>${detalleIngredientes}</tbody>
@@ -101,8 +115,62 @@ function calcularCosto() {
       <p>Costo por porción (${receta.porciones} porciones): <strong>$${costoPorcion.toFixed(2)}</strong></p>
       <p>Precio de venta sugerido (margen ${configuracion.margenGanancia}%): <strong>$${precioVenta.toFixed(2)}</strong></p>
     </div>
+
+    <div>
+      <button class="btn-principal" onclick="ejecutarProduccion()">
+        Producir Receta
+      </button>
+    </div>
   `;
+}
+
+
+//////////////////////////////////////////
+function ejecutarProduccion() {
+  const receta = window.recetaActivaGlobal;
+
+  if (!receta) {
+    alert("No hay ninguna receta activa para producir.");
+    return;
+  }
+
+  let stockSuficiente = true;
+
+  // PASO 1: Validar si hay stock suficiente en materiasPrimas antes de alterar nada
+  receta.ingredientes.forEach((ing) => {
+    const mp = materiasPrimas.find((m) => m.id === ing.idMateria);
+    if (mp) {
+      if (mp.cantidad < ing.cantidad) {
+        alert(
+          `⚠ Inventario insuficiente de: ${mp.nombre}.\nRequieres: ${ing.cantidad} ${mp.unidad}\nStock actual: ${mp.cantidad} ${mp.unidad}`,
+        );
+        stockSuficiente = false;
+      }
+    }
+  });
+
+
+  if (!stockSuficiente) return;
+
+
+  receta.ingredientes.forEach((ing) => {
+    const mp = materiasPrimas.find((m) => m.id === ing.idMateria);
+    if (mp) {
+      mp.cantidad = mp.cantidad - ing.cantidad;
+    }
+  });
+
+  localStorage.setItem("materiasPrimas", JSON.stringify(materiasPrimas));
+
+  alert(
+    `Orden de producción exitosa para la receta "${receta.nombre}". Stock Actualizado`,
+  );
+
+
+  calcularCosto();
 }
 
 // Inicializar el selector al cargar la página
 actualizarSelectorRecetas();
+
+
