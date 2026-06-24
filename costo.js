@@ -3,7 +3,7 @@
 // Funciones para el cálculo del costo de producción
 // ============================================
 
-//-----EVALUACION-----
+//-----/////////-----
 window.recetaActivaGlobal = null;
 
 // actualizarSelectorRecetas: llena el select con las recetas disponibles
@@ -17,6 +17,7 @@ function actualizarSelectorRecetas() {
 
 // calcularCosto: calcula el costo real de la receta seleccionada
 function calcularCosto() {
+  //Etapa 1: Captura de datos y validación
   const idSeleccionado = parseInt(document.getElementById("sel-receta").value);
 
   if (isNaN(idSeleccionado)) {
@@ -29,10 +30,11 @@ function calcularCosto() {
     alert("Receta no encontrada.");
     return;
   }
-//------EVALUACION-------
-  window.recetaActivaGlobal = receta;
 
-  // --- PASO 1: Costo de ingredientes con merma ---
+  window.recetaActivaGlobal = receta;
+  //------///////-------
+
+  //Etapa 2: Bucle de ingredientes y cálculo de mermas
   let costoIngredientes = 0;
   let detalleIngredientes = "";
 
@@ -47,8 +49,6 @@ function calcularCosto() {
     const costoIngrediente = precioRealPorUnidad * ing.cantidad;
     costoIngredientes += costoIngrediente;
 
-
-    //-------EVALUACION-----------
     const precioSinMerma = mp.precio / mp.cantidad;
     const costoSinMerma = precioSinMerma * ing.cantidad;
     const costoMerma = costoIngrediente - costoSinMerma;
@@ -63,6 +63,9 @@ function calcularCosto() {
       </tr>
     `;
   });
+  //-------///////-----------
+
+  //Etapa 3: Estructura de costos en cadena
 
   // --- PASO 2: Mano de obra ---
   // Fórmula: (minutos / 60) × costo por hora
@@ -86,8 +89,8 @@ function calcularCosto() {
   // Fórmula: costo por porción × (1 + margen/100)
   const precioVenta = costoPorcion * (1 + configuracion.margenGanancia / 100);
 
-  // --- Mostrar desglose en pantalla ---
-  //-----EVALUACION------
+  
+  //Etapa 4: Renderizado de la interfaz y botón operativo
   document.getElementById("resultado-costo").innerHTML = `
     <h3>Desglose de costos: ${receta.nombre}</h3>
 
@@ -116,8 +119,8 @@ function calcularCosto() {
       <p>Precio de venta sugerido (margen ${configuracion.margenGanancia}%): <strong>$${precioVenta.toFixed(2)}</strong></p>
     </div>
 
-    <div>
-      <button class="btn-principal" onclick="ejecutarProduccion()">
+    <div style="margin-top: 20px; text-align: right;">
+      <button class="btn-principal" onclick="ejecutarProduccion()" style="background-color: #2ecc71; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
         Producir Receta
       </button>
     </div>
