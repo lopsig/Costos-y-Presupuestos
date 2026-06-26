@@ -5,6 +5,7 @@
 
 //-----/////////-----
 window.recetaActivaGlobal = null;
+window.clienteActivoGlobal = null;
 
 // actualizarSelectorRecetas: llena el select con las recetas disponibles
 function actualizarSelectorRecetas() {
@@ -15,10 +16,25 @@ function actualizarSelectorRecetas() {
   });
 }
 
+// actualizarSelectorClientes: llena el select con los clientes registrados
+function actualizarSelectorClientes() {
+  const select = document.getElementById("sel-cliente");
+  if (!select) return;
+  select.innerHTML = '<option value="">-- Selecciona un cliente --</option>';
+  
+  // Se busca del localStorage por si se agregaron nuevos, si no, usa el fallback por defecto
+  const listaClientes = JSON.parse(localStorage.getItem("clientes")) || (typeof clientes !== "undefined" ? clientes : []);
+  
+  listaClientes.forEach((cli) => {
+    select.innerHTML += `<option value="${cli.cedula}">${cli.nombre} ${cli.apellido}</option>`;
+  });
+}
+
 // calcularCosto: calcula el costo real de la receta seleccionada
 function calcularCosto() {
   //Etapa 1: Captura de datos y validación
   const idSeleccionado = parseInt(document.getElementById("sel-receta").value);
+  const cedulaCliente = document.getElementById("sel-cliente").value;
 
   if (isNaN(idSeleccionado)) {
     alert("Por favor selecciona una receta.");
@@ -31,7 +47,19 @@ function calcularCosto() {
     return;
   }
 
+  // Buscamos al cliente seleccionado en el local storage
+const listaClientes =
+  JSON.parse(localStorage.getItem("clientes")) ||
+  (typeof clientes !== "undefined" ? clientes : []);
+const cliente = listaClientes.find((c) => c.cedula === cedulaCliente);
+
+if (!cliente) {
+  alert("Cliente no encontrado.");
+  return;
+}
+
   window.recetaActivaGlobal = receta;
+  window.clienteActivoGlobal = cliente;
   //------///////-------
 
   //Etapa 2: Bucle de ingredientes y cálculo de mermas
@@ -89,7 +117,6 @@ function calcularCosto() {
   // Fórmula: costo por porción × (1 + margen/100)
   const precioVenta = costoPorcion * (1 + configuracion.margenGanancia / 100);
 
-  
   //Etapa 4: Renderizado de la interfaz y botón operativo
   document.getElementById("resultado-costo").innerHTML = `
     <h3>Desglose de costos: ${receta.nombre}</h3>
@@ -119,7 +146,9 @@ function calcularCosto() {
       <p>Precio de venta sugerido (margen ${configuracion.margenGanancia}%): <strong>$${precioVenta.toFixed(2)}</strong></p>
     </div>
 
-    <div style="margin-top: 20px; text-align: right;">
+    <div id="contenedor-cliente-produccion"></div>
+
+  <div style="margin-top: 20px; text-align: right;">
       <button class="btn-principal" onclick="ejecutarProduccion()" style="background-color: #2ecc71; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
         Producir Receta
       </button>
@@ -131,6 +160,7 @@ function calcularCosto() {
 //////////////////////////////////////////
 function ejecutarProduccion() {
   const receta = window.recetaActivaGlobal;
+  const cliente = window.clienteActivoGlobal;
 
   if (!receta) {
     alert("No hay ninguna receta activa para producir.");
@@ -152,9 +182,7 @@ function ejecutarProduccion() {
     }
   });
 
-
   if (!stockSuficiente) return;
-
 
   receta.ingredientes.forEach((ing) => {
     const mp = materiasPrimas.find((m) => m.id === ing.idMateria);
@@ -169,11 +197,47 @@ function ejecutarProduccion() {
     `Orden de producción exitosa para la receta "${receta.nombre}". Stock Actualizado`,
   );
 
+   calcularCosto();
 
-  calcularCosto();
+  //Generar visualmente la tabla de asignación de cliente
+  document.getElementById("contenedor-cliente-produccion").innerHTML = `
+    <br>
+    <h4 style="color: #2c3e50; margin-bottom: 8px;">✔ Orden Asignada para Distribución</h4>
+    <table>
+      <thead>
+        <tr style="background-color: #34495e; color: white;">
+          <th>Cédula</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Celular</th>
+          <th>Producto Asignado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>${cliente.cedula}</td>
+          <td>${cliente.nombre}</td>
+          <td>${cliente.apellido}</td>
+          <td>${cliente.correo}</td>
+          <td>${cliente.celular}</td>
+          <td><span style="background: #2ecc71; color: white; padding: 3px 8px; border-radius: 4px; font-weight: bold;">${receta.nombre}</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+  `;
+
+  // Desactivamos u ocultamos el botón de producción para evitar que se presione dos veces seguidas para la misma orden
+  const boton = document.querySelector(".btn-principal");
+  if (boton) {
+    boton.classList.add("btn-desactivado");
+    boton.innerText = "🚀 Orden Despachada";
+  }
 }
 
 // Inicializar el selector al cargar la página
 actualizarSelectorRecetas();
+actualizarSelectorClientes();
 
 

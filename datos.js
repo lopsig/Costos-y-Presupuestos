@@ -69,7 +69,6 @@ const materiasPrimasDefault = [
 ];
 
 // Datos quemados de recetas (se usan solo la primera vez)
-// Datos quemados de recetas (se usan solo la primera vez)
 const recetasDefault = [
   {
     id: 1,
@@ -107,6 +106,34 @@ const configuracionDefault = {
   margenGanancia: 40,
 };
 
+// 
+const clientesDefault = [
+  {
+    id: 1,
+    cedula: "1721476818",
+    nombre: "Jonathan",
+    apellido: "López",
+    correo: "jonathan@correo.com",
+    celular: "0963355296",
+  },
+  {
+    id: 2,
+    cedula: "1721746818",
+    nombre: "Angelith",
+    apellido: "López",
+    correo: "angelith@correo.com",
+    celular: "0998989898",
+  },
+  {
+    id: 3,
+    cedula: "1705858585",
+    nombre: "Wladimir",
+    apellido: "López",
+    correo: "wladdy@correo.com",
+    celular: "0979797979",
+  },
+];
+
 // ── Leer desde localStorage o usar los datos por defecto ──
 
 // Si localStorage tiene datos los usa, si no usa los quemados
@@ -117,10 +144,15 @@ let materiasPrimas = localStorage.getItem("materiasPrimas")
 let recetas = localStorage.getItem("recetas")
   ? JSON.parse(localStorage.getItem("recetas"))
   : recetasDefault;
-
-let configuracion = localStorage.getItem("configuracion")
+  
+  let configuracion = localStorage.getItem("configuracion")
   ? JSON.parse(localStorage.getItem("configuracion"))
   : configuracionDefault;
+  
+let clientes = localStorage.getItem("clientes")
+  ? JSON.parse(localStorage.getItem("clientes"))
+  : clientesDefault;
+
 
 // ── Contadores de id ──
 // Se calculan automáticamente buscando el id más alto existente
@@ -128,3 +160,4 @@ let configuracion = localStorage.getItem("configuracion")
 let proximoIdMateria =
   materiasPrimas.reduce((max, mp) => Math.max(max, mp.id), 0) + 1;
 let proximoIdReceta = recetas.reduce((max, r) => Math.max(max, r.id), 0) + 1;
+let proximoIdClientes = clientes.reduce((max, r) => Math.max(max, r.id), 0) + 1;

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materia Prima — Costos Y Presupuestos</title>
+  <link rel="stylesheet" href="costos.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>COSTOS Y PRESUPUESTOS</h1>
+  </header>
+
+  <!-- NAV: links a cada página -->
+  <nav>
+    <a href="index.html">Conceptos</a>
+    <a href="materia-prima.html">Materia Prima</a>
+    <a href="recetas.html">Recetas</a>
+    <a href="configuracion.html">Configuración</a>
+    <a href="clientes.html">Clientes</a>
+    <a href="costo-produccion.html">Costo de Producción</a>
+  </nav>
+
+  <!-- SECCIÓN: CLIENTES -->
+  <section id="clientes" class="activa">
+    <div class="seccion-sistema">
+      <h2>Registro de Clientes</h2>
+      <p>Ingresa los todos los campos para registrar el cliente.</p>
+
+      <!-- Formulario de registro -->
+      <div class="formulario">
+
+        <div class="campo">
+          <label for="cliente-cedula">Cedula</label>
+          <input type="text" id="cliente-cedula" placeholder="Ej: 172XXXXXXX">
+        </div>
+        <div class="campo">
+          <label for="cliente-nombre">Nombre</label>
+          <input type="text" id="cliente-nombre" placeholder="Ej: Jonathan">
+        </div>
+        <div class="campo">
+          <label for="cliente-apellido">Apellido</label>
+          <input type="text" id="cliente-apellido" placeholder="Ej: López">
+        </div>
+        <div class="campo">
+          <label for="cliente-correo">Correo</label>
+          <input type="text" id="cliente-correo" placeholder="Ej: usuario@correo.com">
+        </div>
+        <div class="campo">
+          <label for="cliente-celular">Celular</label>
+          <input type="text" id="cliente-celular" placeholder="Ej: 09XXXXXXXX">
+        </div>
+
+        <!-- El texto del botón cambia según si se está creando o editando -->
+        <button class="btn-guardar" onclick="guardarCliente()">Guardar Cliente</button>
+      </div>
+      
+      <!-- Tabla de materias primas registradas -->
+      <h3>Clientes Registrados</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Celular</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-clientes"></tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <!-- Primero datos.js para que las variables estén disponibles -->
+  <script src="datos.js"></script>
+  <script src="navegacion.js"></script>
+  <script src="clientes.js"></script>
+</body>
+
+</html>
